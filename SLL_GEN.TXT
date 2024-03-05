@@ -1,0 +1,51 @@
+You can still use OpenSSL on Windows CMD to generate SSL certificates. Here's how you can do it step by step:
+
+1. **Download OpenSSL**: You can download OpenSSL for Windows from the official OpenSSL website. Make sure to download the appropriate version for your system architecture (32-bit or 64-bit).
+
+2. **Install OpenSSL**: After downloading OpenSSL, follow the installation instructions provided. Make sure to add OpenSSL to your system's PATH environment variable during installation so you can run OpenSSL commands from any directory in the Command Prompt.
+
+3. **Generate Private Key (CERT_KEY)**:
+   
+   Open Command Prompt and navigate to the directory where you want to store your SSL certificates. Then, run the following command:
+
+   ```bash
+   openssl genrsa -out private.key 2048
+   ```
+
+   This command generates a private key (`private.key`) with a size of 2048 bits.
+
+4. **Generate Certificate Signing Request (CSR)**:
+
+   Run the following command to generate a Certificate Signing Request:
+
+   ```bash
+   openssl req -new -key private.key -out certificate.csr
+   ```
+
+   Follow the prompts to enter information such as your country, state, city, organization, etc.
+
+5. **Generate Self-signed Certificate (CERT_CERT)**:
+
+   Use the following command to generate a self-signed certificate:
+
+   ```bash
+   openssl x509 -req -days 365 -in certificate.csr -signkey private.key -out certificate.crt
+   ```
+
+   This command generates a self-signed SSL certificate (`certificate.crt`) valid for 365 days.
+
+6. **Generate Certificate Authority (CA) Bundle (CERT_CA)**:
+
+   Since you're creating a self-signed certificate, your CA bundle will be the same as your certificate file (`certificate.crt`). You can simply copy the `certificate.crt` file to create your CA bundle:
+
+   ```bash
+   copy certificate.crt ca_bundle.crt
+   ```
+
+Now you should have the following files:
+
+- `private.key`: Your private key.
+- `certificate.crt`: Your SSL certificate.
+- `ca_bundle.crt`: Your CA bundle.
+
+You can use these files in your Node.js application and set the appropriate paths in your environment variables.
