@@ -3,7 +3,8 @@ You can still use OpenSSL on Windows CMD to generate SSL certificates. Here's ho
 1. **Download OpenSSL**: You can download OpenSSL for Windows from the official OpenSSL website. Make sure to download the appropriate version for your system architecture (32-bit or 64-bit).
 
 2. **Install OpenSSL**: After downloading OpenSSL, follow the installation instructions provided. Make sure to add OpenSSL to your system's PATH environment variable during installation so you can run OpenSSL commands from any directory in the Command Prompt.
-
+OPEN SSL DOWNLOAD LINK (WINDOWS) : https://slproweb.com/download/Win64OpenSSL-3_2_1.exe
+SETUP ENVIRONMENT VARIABLE : SAMPLE PATH : C:\Program Files\OpenSSL-Win64\bin
 3. **Generate Private Key (CERT_KEY)**:
    
    Open Command Prompt and navigate to the directory where you want to store your SSL certificates. Then, run the following command:
